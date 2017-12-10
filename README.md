@@ -6,4 +6,4 @@ This application is developed by Francesco Bognini on school ground
 
 ## References
 
-This app is a deployed on [my website](http://francescobognini.altervista.org/crud/file/)
+This app is a deployed on my [Altervista](http://francescobognini.altervista.org/scuola/crud/file/)
