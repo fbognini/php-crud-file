@@ -3,11 +3,11 @@
 	if($_SERVER["REQUEST_METHOD"] == "POST") {
 		$username = strtoupper($_POST["username"]);
 		$password = strtoupper($_POST["password"]);
-		$_SESSION["username"] = $username;
-		$_SESSION["password"] = $password;
 		if ($handle = fopen("../utenti.csv", "r")){
 			while ($line = fgetcsv($handle, 1000, ";")) {
 				if ($username == $line[0] && $password  == $line[1]){ 
+					$_SESSION["username"] = $username;
+					$_SESSION["password"] = $password;
 					$_SESSION["user-type"] = $line[2][0];
 					header("Location: ../index.php");
 				}
@@ -29,6 +29,7 @@
 	  <div class="card login-form">
 		<h3>Accesso alla piattaforma</h3>
 		<form method='POST' name='form' id='form'>
+			<p class="message">Accedere come utente ROOT (password: ROOT) per testare le funzionalità da amministratore</p>		
 			<input type='hidden' id='status' name="status"/>
 			<div class="form-field">
 				<input type="text" name="username" placeholder="username" required/>
@@ -42,7 +43,7 @@
 			<div class="form-field">
 				<input type="submit" value="accedi"/>
 			</div>
-		  <p class="message">I sorgenti sono disponibili su <a href="https://github.com/fbognini/php-crud-file">GitHub</a></p>
+		  <p class="message">I sorgenti sono disponibili su <a href="https://github.com/fbognini/php-crud-file" target="_blank">GitHub</a></p>
 		</form>
 	  </div>
 

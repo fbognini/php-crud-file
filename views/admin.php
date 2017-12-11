@@ -77,8 +77,12 @@
 					echo '<h4>Lista utenti</h4>';
 					echo '<table class="user-table"><thead><tr><th>Username</th><th>Password</th><th>Tipo</th><th colspan="2">Aggiorna</th></tr></thead><tbody>';
 					if ($handle = fopen("../utenti.csv", "r")){
-						while ($line = fgetcsv($handle, 1000, ";")) {
-							echo '<tr><td>'.$line[0].'</td><td>'.$line[1].'</td><td>'.$line[2].'</td><td onclick="setUser(\''.$line[0].'\'); updateStatus(\'edit\')"><div class="updater">Modifica</div></td><td onclick="setUser(\''.$line[0].'\'); updateStatus(\'delete\')"><div class="updater">Elimina</div></td></tr>';
+						while ($line = fgetcsv($handle, 1000, ";")) {							
+							echo '<tr><td>'.$line[0].'</td><td>'.$line[1].'</td><td>'.$line[2].'</td>';
+							if($line[0] == "ROOT")
+								echo '<td colspan="2">Non è possibile modificare l\'utente ROOT</td></tr>';
+							else
+								echo '<td onclick="setUser(\''.$line[0].'\'); updateStatus(\'edit\')"><div class="updater">Modifica</div></td><td onclick="setUser(\''.$line[0].'\'); updateStatus(\'delete\')"><div class="updater">Elimina</div></td></tr>';
 						}
 						fclose($handle);
 					}
@@ -133,7 +137,7 @@
 					break;
 				case 'edited':
 					echo '<h4>Modifica utente</h4>';
-					echo '<p>'.$userSelected.' modificato</p>';
+					echo '<p>'.$userSelected.' è stato modificato</p>';
 					if (($handle = fopen("../utenti.csv", "r")) && ($temp = fopen("utenti.tmp", "w"))){					
 						$editUsername = $userSelected;
 						$editPassword = strtoupper($_POST["edit-password"]);
@@ -156,7 +160,7 @@
 					if ($userSelected == $_SESSION["username"])
 						echo "<div><p class='error'>Impossibile eliminare se stessi</p></div>";
 					else{
-						echo '<p>'.$userSelected.' eliminato</p>';
+						echo '<p>'.$userSelected.' è stato eliminato</p>';
 						if (($handle = fopen("../utenti.csv", "r")) && ($temp = fopen("utenti.tmp", "w"))){
 							while ($line = fgetcsv($handle, 1000, ";")) {
 								if($userSelected != $line[0]){
