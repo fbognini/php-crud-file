@@ -100,7 +100,7 @@
 					echo '<div class="form-field"><input type="button" value="torna indietro" onclick="updateStatus(\'read\')"/></div>';
 					break;
 				case 'created':
-					echo '<h4>Utente creato</h4>';
+					echo '<h4>Aggiungi utente</h4>';
 					echo $newUserMessage;
 					echo '<div class="form-field"><input type="button" value="torna al menu\'" onclick="updateStatus(\'menu\')"/></div>';
 					break;
@@ -132,7 +132,7 @@
 					echo '<div class="form-field"><input type="button" value="torna indietro" onclick="updateStatus(\'read\')"/></div>';
 					break;
 				case 'edited':
-					echo '<h4>Utente modificato</h4>';
+					echo '<h4>Modifica utente</h4>';
 					echo '<p>'.$userSelected.' modificato</p>';
 					if (($handle = fopen("../utenti.csv", "r")) && ($temp = fopen("utenti.tmp", "w"))){					
 						$editUsername = $userSelected;
