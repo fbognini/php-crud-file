@@ -1,5 +1,51 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:300);
 
+.table thead{
+  text-transform: uppercase;
+}
+.form-control {
+padding: 10px;
+font-size: 16px;
+margin-bottom: 10px;
+}
+.form-control:focus {
+z-index: 2;
+}
+.form-control:not([size]):not([multiple]) {
+  height: 100%!important;
+}
+
+.login-page {
+padding-top: 40px;
+padding-bottom: 40px;
+background-color: #eee;
+text-align: center!important;
+}
+.login-page .form-signin {
+max-width: 370px;
+padding: 15px;
+margin: 0 auto;
+}
+.login-page .form-signin .form-signin-heading{
+margin-bottom: 10px;
+font-weight: 300;
+}
+
+.message p {
+  margin: 0;
+}
+.error {
+  color: red;
+  font-style: italic;
+}	
+.updater {
+  text-transform: uppercase;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+
+/*
 * {
   box-sizing: inherit;
 }
@@ -147,3 +193,4 @@ table {
     text-align: right;
 	color: red;
 }
+*/
